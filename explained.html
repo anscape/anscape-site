@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How it works | Anscape</title>
+  <meta name="description" content="Anscapeの使い方。状況把握→A/B比較→実行までのステップと画面説明。" />
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-badge">A</div>
+        <div>Anscape</div>
+      </div>
+      <nav class="navlinks">
+        <a href="./">Top</a>
+        <a href="./about.html">About</a>
+        <a class="active" href="./explained.html">How it works</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="kicker"><span class="kdot"></span> Step-by-step</div>
+        <h1>How it works</h1>
+        <p class="sub">
+          Anscapeは、<b>Fact（事実）</b>を押さえたうえで、<b>A/Bの比較</b>に集約し、<b>Action（実行）</b>へつなげます。
+          ここでは最短の使い方を説明します。
+        </p>
+
+        <h2 class="section-title">使い方（ステップ）</h2>
+        <div class="card">
+          <ol style="margin:0; padding-left:18px; color:var(--muted)">
+            <li>現在地付近の駅を起点に、周辺路線の運行状況を確認する</li>
+            <li>気になる路線を選ぶ</li>
+            <li>近接列車の状況（遅延・停止/接近など）を確認する</li>
+            <li>左右の画面で A「振替する」 / B「滞在・移動」を比較する</li>
+            <li>外部サービスへ遷移、または候補詳細で決定して行動する</li>
+          </ol>
+        </div>
+
+        <h2 class="section-title">画面ごとの説明（概要）</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="pill">Fact</span>
+            <h2>周辺路線（運行状況）</h2>
+            <p>まず“いま起きていること”を一望して把握します。</p>
+          </div>
+          <div class="card">
+            <span class="pill">Trains</span>
+            <h2>近接列車</h2>
+            <p>路線を選んだ後、近くを走る列車の状況を確認します。</p>
+          </div>
+          <div class="card">
+            <span class="pill">Action A</span>
+            <h2>振替する（即効性）</h2>
+            <ul>
+              <li>シェアサイクルマップ（例）</li>
+              <li>乗換案内サービスへ遷移（例）</li>
+              <li>地図サービスへ遷移（例）</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="pill">Action B</span>
+            <h2>滞在・移動（比較して決める）</h2>
+            <ul>
+              <li>カフェ / コワーキング / タクシー / ご飯 など</li>
+              <li>候補詳細 → 各サービスへ遷移</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="section-title">よくある疑問（FAQ）</h2>
+        <div class="split">
+          <div class="card">
+            <h2>Q. データはリアルタイムですか？</h2>
+            <p>可能な範囲で最新データを取得しますが、反映遅延や欠損が起こり得ます。最終判断は利用者に委ねられます。</p>
+          </div>
+          <div class="card">
+            <h2>Q. 位置情報は必須ですか？</h2>
+            <p>現在地起点で最寄り駅・周辺路線を出すために利用します（方針はAboutに記載）。</p>
+          </div>
+          <div class="card">
+            <h2>Q. 外部サービスに遷移するのはなぜ？</h2>
+            <p>“実行”までを最短にするためです。経路探索や地図操作は得意なサービスに委譲します。</p>
+          </div>
+          <div class="card">
+            <h2>Q. 免責は？</h2>
+            <p>本サイトおよびアプリは参考情報を提供します。運行や安全に関する判断は利用者に委ねられます。</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <footer class="footer">
+          <div>
+            <a href="./">Top</a> / <a href="./about.html">About</a>
+          </div>
+          <div>
+            <a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy（サンプル）</a>
+            ·
+            <a href="mailto:support@example.com">Contact（サンプル）</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
