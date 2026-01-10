@@ -8,113 +8,142 @@
   <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="nav">
+  <div class="wrap">
+    <header class="site-header">
       <div class="brand">
-        <div class="brand-badge">A</div>
-        <div>Anscape</div>
+        <div class="brand-mark" aria-hidden="true">AN</div>
+        <div>
+          <p class="kicker">Anscape / STUCK → ACTION</p>
+          <h1 class="brand-title">Anscape</h1>
+          <p class="brand-subtitle">ダイヤ乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える。</p>
+        </div>
       </div>
-      <nav class="navlinks">
-        <a class="active" href="./">Top</a>
-        <a href="./about.html">About</a>
-        <a href="./explained.html">How it works</a>
-      </nav>
+
+      <ul class="nav">
+        <li><a href="./">Top</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./explained.html">How it works</a></li>
+      </ul>
     </header>
 
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="kicker"><span class="kdot"></span> Decision UI for disruption</div>
-        <h1>ダイヤの乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える。</h1>
-        <p class="sub">
-          Anscapeは、乱れた状況で「いま何が起きていて、どう動くべきか」を最短で理解し、
-          左右の画面で <b>移動／滞在</b> を比較して、迷わず決めるためのアプリです。
-        </p>
-
-        <div class="cta-row">
-          <a class="btn primary" href="https://example.com/appstore" target="_blank" rel="noopener">
-            App Store（サンプル） <span class="arrow">→</span>
-          </a>
-          <a class="btn" href="./explained.html">使い方を見る <span class="arrow">→</span></a>
+    <div class="container">
+      <header class="nav">
+        <div class="brand">
+          <div class="brand-badge" aria-hidden="true">A</div>
+          <div>Anscape</div>
         </div>
+        <nav class="navlinks" aria-label="Page navigation">
+          <a class="active" href="./">Top</a>
+          <a href="./about.html">About</a>
+          <a href="./explained.html">How it works</a>
+        </nav>
+      </header>
 
-        <div class="grid">
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="kicker"><span class="kdot" aria-hidden="true"></span> Decision UI for disruption</div>
+          <h1>ダイヤの乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える。</h1>
+          <p class="sub">
+            Anscapeは、乱れた状況で「いま何が起きていて、どう動くべきか」を最短で理解し、
+            左右の画面で <b>移動／滞在</b> を比較して、迷わず決めるためのアプリです。
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="https://example.com/appstore" target="_blank" rel="noopener">
+              App Store（サンプル） <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn" href="./explained.html">使い方を見る <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <h2>解決する課題</h2>
+              <ul>
+                <li>予期しない遅延・運休で、次の行動が取れず立ち止まってしまう</li>
+                <li>係員・掲示板・複数アプリを往復し、情報探索に時間を溶かす</li>
+                <li>結果として、焦る／無駄に移動する／待つだけになる</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h2>Anscapeの価値</h2>
+              <ul>
+                <li>1タップで“いま起きていること”を把握（周辺路線・列車）</li>
+                <li>判断を2択に圧縮：A 振替 / B 滞在・移動</li>
+                <li>左右比較で“決める”を支援し、そのまま実行へつなぐ</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="section-title">主な機能</h2>
+          <div class="grid">
+            <div class="card">
+              <span class="pill">Fact</span>
+              <h2>周辺路線の運行状況</h2>
+              <p>現在地付近の駅を起点に、複数路線の状況を一望して把握します。</p>
+            </div>
+            <div class="card">
+              <span class="pill">Trains</span>
+              <h2>近接列車の状況</h2>
+              <p>選んだ路線について、近くを走る列車の状況を確認できます。</p>
+            </div>
+            <div class="card">
+              <span class="pill">Action A</span>
+              <h2>振替する（即効性）</h2>
+              <ul>
+                <li>シェアサイクルマップ（例）</li>
+                <li>乗換案内サービスへ遷移（例：Yahoo乗換案内）</li>
+                <li>地図サービスへ遷移（例：Googleマップ）</li>
+              </ul>
+            </div>
+            <div class="card">
+              <span class="pill">Action B</span>
+              <h2>滞在・移動（比較して決める）</h2>
+              <ul>
+                <li>カフェ / コワーキング / シェアサイクル / タクシー / ご飯 など</li>
+                <li>候補の詳細確認 → 各サービスへ遷移</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="section-title">想定ユーザー</h2>
           <div class="card">
-            <h2>解決する課題</h2>
             <ul>
-              <li>予期しない遅延・運休で、次の行動が取れず立ち止まってしまう</li>
-              <li>係員・掲示板・複数アプリを往復し、情報探索に時間を溶かす</li>
-              <li>結果として、焦る／無駄に移動する／待つだけになる</li>
+              <li>都市部（特に東京圏）の通勤・通学/移動中ユーザー</li>
+              <li>駅・路線の近くで“次の行動”を素早く決めたい方</li>
+              <li>普段よく使う駅の情報を集めたい老若男女の乗客</li>
             </ul>
           </div>
-          <div class="card">
-            <h2>Anscapeの価値</h2>
-            <ul>
-              <li>1タップで“いま起きていること”を把握（周辺路線・列車）</li>
-              <li>判断を2択に圧縮：A 振替 / B 滞在・移動</li>
-              <li>左右比較で“決める”を支援し、そのまま実行へつなぐ</li>
-            </ul>
+
+          <hr />
+
+          <div class="note">
+            <b>データ出典（例）</b>：公共交通オープンデータセンター（ODPT）/ GTFS-RT 等。<br/>
+            <b>免責（短縮）</b>：本サイトおよびアプリの情報は参考情報であり、最終判断は利用者に委ねられます。
           </div>
+
+          <footer class="footer">
+            <div>
+              <a href="./about.html">About</a> / <a href="./explained.html">How it works</a>
+            </div>
+            <div>
+              <a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy（サンプル）</a>
+              ·
+              <a href="mailto:support@example.com">Contact（サンプル）</a>
+            </div>
+          </footer>
         </div>
+      </section>
+    </div>
 
-        <h2 class="section-title">主な機能</h2>
-        <div class="grid">
-          <div class="card">
-            <span class="pill">Fact</span>
-            <h2>周辺路線の運行状況</h2>
-            <p>現在地付近の駅を起点に、複数路線の状況を一望して把握します。</p>
-          </div>
-          <div class="card">
-            <span class="pill">Trains</span>
-            <h2>近接列車の状況</h2>
-            <p>選んだ路線について、近くを走る列車の状況を確認できます。</p>
-          </div>
-          <div class="card">
-            <span class="pill">Action A</span>
-            <h2>振替する（即効性）</h2>
-            <ul>
-              <li>シェアサイクルマップ（例）</li>
-              <li>乗換案内サービスへ遷移（例：Yahoo乗換案内）</li>
-              <li>地図サービスへ遷移（例：Googleマップ）</li>
-            </ul>
-          </div>
-          <div class="card">
-            <span class="pill">Action B</span>
-            <h2>滞在・移動（比較して決める）</h2>
-            <ul>
-              <li>カフェ / コワーキング / シェアサイクル / タクシー / ご飯 など</li>
-              <li>候補の詳細確認 → 各サービスへ遷移</li>
-            </ul>
-          </div>
-        </div>
-
-        <h2 class="section-title">想定ユーザー</h2>
-        <div class="card">
-          <ul>
-            <li>都市部（特に東京圏）の通勤・通学/移動中ユーザー</li>
-            <li>駅・路線の近くで“次の行動”を素早く決めたい方</li>
-            <li>普段よく使う駅の情報を集めたい老若男女の乗客</li>
-          </ul>
-        </div>
-
-        <hr />
-
-        <div class="note">
-          <b>データ出典（例）</b>：公共交通オープンデータセンター（ODPT）/ GTFS-RT 等。<br/>
-          <b>免責（短縮）</b>：本サイトおよびアプリの情報は参考情報であり、最終判断は利用者に委ねられます。
-        </div>
-
-        <footer class="footer">
-          <div>
-            <a href="./about.html">About</a> / <a href="./explained.html">How it works</a>
-          </div>
-          <div>
-            <a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy（サンプル）</a>
-            ·
-            <a href="mailto:support@example.com">Contact（サンプル）</a>
-          </div>
-        </footer>
+    <footer class="site-footer">
+      <div>データ出典（例）：公共交通オープンデータセンター（ODPT）/ GTFS-RT 等。</div>
+      <div class="footer-links">
+        <a href="./about.html">About</a>
+        <a href="./explained.html">How it works</a>
+        <a href="https://example.com">Privacy（サンプル）</a>
+        <a href="mailto:example@example.com">Contact（サンプル）</a>
       </div>
-    </section>
+    </footer>
   </div>
 </body>
 </html>
