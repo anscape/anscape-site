@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anscapeについて | Anscape </title>
+  <meta name="description" content="Anscapeの概要、構成画面、使い方、製作者情報、お問い合わせ。" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skipLink" href="#main">本文へスキップ</a>
+
+  <header class="siteHeader" role="banner">
+    <div class="container headerInner">
+      <div class="brand">
+        <a class="brandLink" href="index.html" aria-label="Anscape HOME">
+          <span class="brandMark" aria-hidden="true"></span>
+          <span class="brandText">Anscape</span>
+        </a>
+      </div>
+
+      <button id="navToggle" class="navToggle" type="button"
+        aria-controls="siteNav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="navToggleBars" aria-hidden="true"></span>
+      </button>
+
+      <nav id="siteNav" class="siteNav" aria-label="グローバルナビゲーション">
+        <ul class="navList">
+          <li><a class="navLink" href="index.html">HOME</a></li>
+          <li><a class="navLink is-current" href="about_anscape.html" aria-current="page">Anscapeについて</a></li>
+          <li><a class="navLink" href="function_anscape.html">Anscapeの仕組み</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="navBackdrop" class="navBackdrop" hidden></div>
+
+  <main id="main" class="main" role="main">
+    <div class="container">
+      <header class="pageHeader" id="about_anscape">
+        <h1 class="h1">Anscapeについて</h1>
+      </header>
+
+      <nav class="toc" aria-label="このページの目次">
+        <ul class="tocList">
+          <li><a class="tocLink" href="#about_what">Anscapeとは</a></li>
+          <li><a class="tocLink" href="#about_screens">構成画面</a></li>
+          <li><a class="tocLink" href="#about_howto">使い方</a></li>
+          <li><a class="tocLink" href="#about_team">製作者について</a></li>
+          <li><a class="tocLink" href="#about_contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+
+      <section class="section" id="about_what">
+        <h2 class="h2">Anscapeとは</h2>
+        <div class="prose">
+          <p>
+            Anscapeは予期せぬダイヤ乱れや運休で生まれる「空白時間」を次の行動（Action）につなげて、駅を中心とした“価値ある時間”を提供するアプリです。
+          </p>
+          <p>
+            １タップで現在地の周辺の駅の路線の運行状況や近接列車の遅延状況を把握し、いつ発生したのか、どのくらい遅れているのかが一目でわかります。把握した情報を元に、左画面では振替手段を探す、右画面では別の選択肢（滞在・移動）をとる、２つの行動を画面の移動でわかりやすく表示。状況把握から次の行動までを一気通貫したアプリケーションです。
+          </p>
+          <p>
+            Anscapeを活用することで、利用者は今まで予期しない問題を解決するだけでなく、ビジネスやお出かけの時間を有効に活用でき、鉄道事業者はお客様の質問の対応の削減・自社サービスの利用を促し、モビリティ事業者・駅周辺の飲食店・不動産事業者のサービスの認知向上に繋げられます。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="about_screens">
+        <h2 class="h2">Anscapeの構成</h2>
+        <div class="prose">
+          <p>
+            Anscapeの構成画面は「HOME」、「振替する」、「滞在・移動」の３つの基本画面と「詳細」「シェアサイクル」の２つのサブ画面で構成される。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="about_howto">
+        <h2 class="h2">Anscapeの使い方</h2>
+        <p class="subtle">手順リストと、各手順に紐づく縦長メディア（9:19.5相当）枠を用意しています。</p>
+
+        <ol class="steps">
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">1. HOME画面へ移動</h3>
+              <p>アプリを開くと、最初にアイコンと「HOME画面」ボタンが表示されるので、「HOME画面」ボタンをクリック</p>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <a class="mediaLink" href="assets/img/anscape_initial.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                <img class="media" src="assets/img/anscape_initial.png" alt="使い方 1 の画像（差し替え可）"
+                  loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+              </a>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">2. 最寄り駅の運行情報を確認</h3>
+              <p>クリックした後、「読込中」が表示され、現在地から一番近い駅の運行情報が表示される</p>
+              <ul>
+                <li>路線名</li>
+                <li>状態（平常/遅延/運転見合せなど）</li>
+                <li>事象発生からの時間（最新/⚪︎分前）</li>
+                <li>時間経過バー（⚪︎分前に応じて長さが決まる）</li>
+              </ul>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <a class="mediaLink" href="assets/img/anscape_traininfo.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                <img class="media" src="assets/img/anscape_traininfo.png" alt="使い方 2 の画像（差し替え可）"
+                  loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+              </a>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">3. 駅の切り替え</h3>
+              <p>上の駅名が記載のナビゲーションをスワイプすると、他の駅の情報も確認できる</p>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <div class="mediaFrameInner">
+                <video class="media" controls preload="metadata" playsinline>
+                  <source src="assets/video/Anscape_otherstationinfo.mov" type="video/quicktime" />
+                  <source src="assets/video/Anscape_otherstationinfo.mp4" type="video/mp4" />
+                  お使いのブラウザは video タグに対応していません。
+                </video>
+              </div>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">4. 接近列車の詳細</h3>
+              <p>各路線のカードをタップすると、駅に近づく３つの列車上り下り両方の情報が確認できる</p>
+              <ul>
+                <li>列車番号</li>
+                <li>遅延時間（分）</li>
+                <li>行き先</li>
+                <li>現在の駅</li>
+                <li>状態（止まっているか、動いているか）</li>
+              </ul>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <div class="mediaFrameInner">
+                <video class="media" controls preload="metadata" playsinline>
+                  <source src="assets/video/anscape_closetraininfo.mov" type="video/quicktime" />
+                  <source src="assets/video/anscape_closetraininfo.mp4" type="video/mp4" />
+                  お使いのブラウザは video タグに対応していません。
+                </video>
+              </div>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">5. 振替手段の確認</h3>
+              <p>「HOME」画面に戻り、右にスワイプすると「振替する」画面が表示され、代替手段を提示する。それぞれのサービス名をタップすると公式サイトもしくは6に遷移する</p>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <a class="mediaLink" href="assets/img/anction_findotherway.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                <img class="media" src="assets/img/anction_findotherway.png" alt="使い方 5 の画像（差し替え可）"
+                  loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+              </a>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">6. シェアサイクルマップ</h3>
+              <p>「振替する」画面で「シェアサイクルマップを開く」をタップすると、「シェアサイクル」画面が開く。現在地から半径750m以内のポートを可視化し、貸出状況が確認できる</p>
+              <ul>
+                <li>ポート名</li>
+                <li>利用可能バイク数</li>
+                <li>現在地からの距離(m)</li>
+                <li>各サイトへのリンク（iOS/Android/Web）</li>
+              </ul>
+            </div>
+
+            <div class="mediaPair">
+              <figure class="mediaFrame mediaFrame--phone">
+                <a class="mediaLink" href="assets/img/anscape_cyclemap.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                  <img class="media" src="assets/img/anscape_cyclemap.png" alt="使い方 6 の画像（サイクルマップ）"
+                    loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+                </a>
+                <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+              </figure>
+
+              <figure class="mediaFrame mediaFrame--phone">
+                <a class="mediaLink" href="assets/img/anscape_cycledetail.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                  <img class="media" src="assets/img/anscape_cycledetail.png" alt="使い方 6 の画像（ポート詳細）"
+                    loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+                </a>
+                <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+              </figure>
+            </div>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">7. 滞在・移動</h3>
+              <p>「HOME」画面に戻り、左にスワイプすると「滞在・移動」画面が表示される。駅周辺でできるカテゴリの選択肢が表示される。</p>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <a class="mediaLink" href="assets/img/anscape_stayandmove.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                <img class="media" src="assets/img/anscape_stayandmove.png" alt="使い方 7 の画像（差し替え可）"
+                  loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+              </a>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+
+          <li class="step">
+            <div class="stepBody">
+              <h3 class="h3">8. 詳細（カテゴリ別）</h3>
+              <p>「滞在・移動」画面で、各カテゴリをタップすると、「詳細」画面が表示され、カテゴリごとのサービスが表示される。（例はコワーキング）</p>
+              <p>各サービスをタップすると、公式サイトもしくはマップに移動する。</p>
+            </div>
+
+            <figure class="mediaFrame mediaFrame--phone">
+              <a class="mediaLink" href="assets/img/anscape_choicedetail.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+                <img class="media" src="assets/img/anscape_choicedetail.png" alt="使い方 8 の画像（差し替え可）"
+                  loading="lazy" decoding="async" data-media="img" data-fallback="phone" />
+              </a>
+              <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+            </figure>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section" id="about_team">
+        <h2 class="h2">製作者について</h2>
+
+        <!-- 例外：ここだけ短いサンプル文を仮置きOK（誇張せず一般的な紹介文） -->
+        <div class="prose">
+          <p>
+            本アプリおよび本サイトは、個人/小規模チームで企画・開発しています。日々変化する公共交通の状況を、利用者が素早く把握し次の行動に移れるよう、表示の分かりやすさとデータ処理の信頼性を重視して改善を続けています。
+          </p>
+          <!-- TODO: PASTE HERE（製作者紹介文を差し替え） -->
+        </div>
+      </section>
+
+      <section class="section" id="about_contact">
+        <h2 class="h2">お問い合わせ</h2>
+        <!-- TODO: PASTE HERE（本文） -->
+        <div class="prose">
+          <p>お問い合わせはこちらまで</p>
+          <p><a class="link" href="mailto:info@solveis.space">info@solveis.space</a></p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="siteFooter" role="contentinfo">
+      <div class="container footerInner">
+        <p class="footerText">© Anscape</p>
+        <p class="footerText">
+          <a class="link" href="https://apps.apple.com/jp/app/anscape/id6756722587" target="_blank" rel="noopener">App Store</a>
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox (共通) -->
+  <div id="lightbox" class="lightbox" hidden>
+    <div class="lightboxBackdrop" data-lightbox-close></div>
+    <div class="lightboxDialog" role="dialog" aria-modal="true" aria-label="画像拡大表示">
+      <button class="lightboxClose" type="button" data-lightbox-close aria-label="閉じる">×</button>
+      <figure class="lightboxFigure">
+        <img id="lightboxImg" class="lightboxImg" alt="" />
+        <figcaption id="lightboxCaption" class="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

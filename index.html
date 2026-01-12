@@ -2,148 +2,136 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anscape | STUCKをACTIONに変える</title>
-  <meta name="description" content="ダイヤの乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える意思決定UI。運行状況を1タップで把握し、移動／滞在を比較して決める。" />
-  <link rel="stylesheet" href="./assets/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anscape | ドキュメント</title>
+  <meta name="description" content="Anscapeの概要・使い方・仕組みをまとめたドキュメントサイト（GitHub Pages）。" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
-  <div class="wrap">
-    <header class="site-header">
+  <a class="skipLink" href="#main">本文へスキップ</a>
+
+  <header class="siteHeader" role="banner">
+    <div class="container headerInner">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true">AN</div>
-        <div>
-          <p class="kicker">Anscape / STUCK → ACTION</p>
-          <h1 class="brand-title">Anscape</h1>
-          <p class="brand-subtitle">ダイヤ乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える。</p>
-        </div>
+        <a class="brandLink" href="index.html" aria-label="Anscape HOME">
+          <span class="brandMark" aria-hidden="true"></span>
+          <span class="brandText">Anscape</span>
+        </a>
       </div>
 
-      <ul class="nav">
-        <li><a href="./">Top</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./explained.html">How it works</a></li>
-      </ul>
-    </header>
+      <button id="navToggle" class="navToggle" type="button"
+        aria-controls="siteNav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="navToggleBars" aria-hidden="true"></span>
+      </button>
 
-    <div class="container">
-      <header class="nav">
-        <div class="brand">
-          <div class="brand-badge" aria-hidden="true">A</div>
-          <div>Anscape</div>
-        </div>
-        <nav class="navlinks" aria-label="Page navigation">
-          <a class="active" href="./">Top</a>
-          <a href="./about.html">About</a>
-          <a href="./explained.html">How it works</a>
-        </nav>
-      </header>
-
-      <section class="hero">
-        <div class="hero-inner">
-          <div class="kicker"><span class="kdot" aria-hidden="true"></span> Decision UI for disruption</div>
-          <h1>ダイヤの乱れで生まれる“詰まり（STUCK）”を、次の行動（ACTION）に変える。</h1>
-          <p class="sub">
-            Anscapeは、乱れた状況で「いま何が起きていて、どう動くべきか」を最短で理解し、
-            左右の画面で <b>移動／滞在</b> を比較して、迷わず決めるためのアプリです。
-          </p>
-
-          <div class="cta-row">
-            <a class="btn primary" href="https://example.com/appstore" target="_blank" rel="noopener">
-              App Store（サンプル） <span class="arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="btn" href="./explained.html">使い方を見る <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-
-          <div class="grid">
-            <div class="card">
-              <h2>解決する課題</h2>
-              <ul>
-                <li>予期しない遅延・運休で、次の行動が取れず立ち止まってしまう</li>
-                <li>係員・掲示板・複数アプリを往復し、情報探索に時間を溶かす</li>
-                <li>結果として、焦る／無駄に移動する／待つだけになる</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h2>Anscapeの価値</h2>
-              <ul>
-                <li>1タップで“いま起きていること”を把握（周辺路線・列車）</li>
-                <li>判断を2択に圧縮：A 振替 / B 滞在・移動</li>
-                <li>左右比較で“決める”を支援し、そのまま実行へつなぐ</li>
-              </ul>
-            </div>
-          </div>
-
-          <h2 class="section-title">主な機能</h2>
-          <div class="grid">
-            <div class="card">
-              <span class="pill">Fact</span>
-              <h2>周辺路線の運行状況</h2>
-              <p>現在地付近の駅を起点に、複数路線の状況を一望して把握します。</p>
-            </div>
-            <div class="card">
-              <span class="pill">Trains</span>
-              <h2>近接列車の状況</h2>
-              <p>選んだ路線について、近くを走る列車の状況を確認できます。</p>
-            </div>
-            <div class="card">
-              <span class="pill">Action A</span>
-              <h2>振替する（即効性）</h2>
-              <ul>
-                <li>シェアサイクルマップ（例）</li>
-                <li>乗換案内サービスへ遷移（例：Yahoo乗換案内）</li>
-                <li>地図サービスへ遷移（例：Googleマップ）</li>
-              </ul>
-            </div>
-            <div class="card">
-              <span class="pill">Action B</span>
-              <h2>滞在・移動（比較して決める）</h2>
-              <ul>
-                <li>カフェ / コワーキング / シェアサイクル / タクシー / ご飯 など</li>
-                <li>候補の詳細確認 → 各サービスへ遷移</li>
-              </ul>
-            </div>
-          </div>
-
-          <h2 class="section-title">想定ユーザー</h2>
-          <div class="card">
-            <ul>
-              <li>都市部（特に東京圏）の通勤・通学/移動中ユーザー</li>
-              <li>駅・路線の近くで“次の行動”を素早く決めたい方</li>
-              <li>普段よく使う駅の情報を集めたい老若男女の乗客</li>
-            </ul>
-          </div>
-
-          <hr />
-
-          <div class="note">
-            <b>データ出典（例）</b>：公共交通オープンデータセンター（ODPT）/ GTFS-RT 等。<br/>
-            <b>免責（短縮）</b>：本サイトおよびアプリの情報は参考情報であり、最終判断は利用者に委ねられます。
-          </div>
-
-          <footer class="footer">
-            <div>
-              <a href="./about.html">About</a> / <a href="./explained.html">How it works</a>
-            </div>
-            <div>
-              <a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy（サンプル）</a>
-              ·
-              <a href="mailto:support@example.com">Contact（サンプル）</a>
-            </div>
-          </footer>
-        </div>
-      </section>
+      <nav id="siteNav" class="siteNav" aria-label="グローバルナビゲーション">
+        <ul class="navList">
+          <li><a class="navLink is-current" href="index.html" aria-current="page">HOME</a></li>
+          <li><a class="navLink" href="about_anscape.html">Anscapeについて</a></li>
+          <li><a class="navLink" href="function_anscape.html">Anscapeの仕組み</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <footer class="site-footer">
-      <div>データ出典（例）：公共交通オープンデータセンター（ODPT）/ GTFS-RT 等。</div>
-      <div class="footer-links">
-        <a href="./about.html">About</a>
-        <a href="./explained.html">How it works</a>
-        <a href="https://example.com">Privacy（サンプル）</a>
-        <a href="mailto:example@example.com">Contact（サンプル）</a>
+  <div id="navBackdrop" class="navBackdrop" hidden></div>
+
+  <main id="main" class="main" role="main">
+    <section id="home_anscape" class="section section--hero">
+      <div class="container">
+        <div class="hero">
+          <figure class="heroIcon" aria-label="アプリアイコン">
+            <img
+              class="heroIconImg"
+              src="assets/img/Anscape-icon.png"
+              alt="Anscape アイコン"
+              loading="eager"
+              decoding="async"
+              data-media="img"
+              data-fallback="square"
+            />
+            <figcaption class="visuallyHidden">Anscape アプリアイコン</figcaption>
+          </figure>
+
+          <div class="heroText">
+            <h1 class="h1">Anscape</h1>
+
+            <p class="lead">新たな景色をみる、答えの景色をみにいく</p>
+
+            <div class="heroActions" aria-label="ページリンク">
+              <a class="btn" href="about_anscape.html">Anscapeについて</a>
+              <a class="btn" href="function_anscape.html">Anscapeの仕組みについて</a>
+              <a class="btn btn--solid" href="https://apps.apple.com/jp/app/anscape/id6756722587" target="_blank" rel="noopener">
+                Anscapeをダウンロード（iOS）
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid--2">
+          <section class="card" id="home_video">
+            <header class="cardHeader">
+              <h2 class="h2">紹介動画</h2>
+            </header>
+
+            <!-- TODO: PASTE HERE（紹介動画） -->
+            <figure class="mediaFrame mediaFrame--widescreen" data-aspect="16x9">
+              <div class="mediaFrameInner">
+                <video class="media" controls preload="metadata" playsinline>
+                  <source src="assets/video/Anscape動画.mp4" type="video/mp4" />
+                  お使いのブラウザは video タグに対応していません。
+                </video>
+              </div>
+              <figcaption class="figcaption">
+                <!-- TODO: PASTE HERE（キャプション任意） -->
+              </figcaption>
+            </figure>
+          </section>
+
+          <aside class="card" id="home_notice">
+            <header class="cardHeader">
+              <h2 class="h2">注意事項</h2>
+            </header>
+
+            <div class="notice" role="note" aria-label="注意事項">
+              <p>
+                本WebサイトおよびiOSアプリ「Anscape」で提供している公共交通データは、「公共交通オープンデータチャレンジ」の提供データ（2025年12月末時点）および、制作者が独自に収集・作成した公開情報に基づいています。
+                情報の正確性や完全性については細心の注意を払っておりますが、これらを保証するものではありません。最新の運行状況や正確な時刻については、必ず各交通事業者の公式情報をご確認ください。
+              </p>
+              <p>
+                なお、本アプリケーションの表示内容やデータに関して、鉄道会社やバス会社などの公共交通事業者へ直接問い合わせることは行わないようお願いいたします。
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <footer class="siteFooter" role="contentinfo">
+      <div class="container footerInner">
+        <p class="footerText">© Solveis inc.</p>
+        <p class="footerText">
+          <a class="link" href="https://apps.apple.com/jp/app/anscape/id6756722587" target="_blank" rel="noopener">App Store</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span class="subtle">Anscapeアプリはこちらから</span>
+        </p>
       </div>
     </footer>
+  </main>
+
+  <!-- Lightbox (共通) -->
+  <div id="lightbox" class="lightbox" hidden>
+    <div class="lightboxBackdrop" data-lightbox-close></div>
+    <div class="lightboxDialog" role="dialog" aria-modal="true" aria-label="画像拡大表示">
+      <button class="lightboxClose" type="button" data-lightbox-close aria-label="閉じる">×</button>
+      <figure class="lightboxFigure">
+        <img id="lightboxImg" class="lightboxImg" alt="" />
+        <figcaption id="lightboxCaption" class="lightboxCaption"></figcaption>
+      </figure>
+    </div>
   </div>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

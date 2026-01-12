@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anscapeの仕組み | Anscape </title>
+  <meta name="description" content="Anscapeのバックエンド/データ/各機能の処理フロー概要。" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skipLink" href="#main">本文へスキップ</a>
+
+  <header class="siteHeader" role="banner">
+    <div class="container headerInner">
+      <div class="brand">
+        <a class="brandLink" href="index.html" aria-label="Anscape HOME">
+          <span class="brandMark" aria-hidden="true"></span>
+          <span class="brandText">Anscape</span>
+        </a>
+      </div>
+
+      <button id="navToggle" class="navToggle" type="button"
+        aria-controls="siteNav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="navToggleBars" aria-hidden="true"></span>
+      </button>
+
+      <nav id="siteNav" class="siteNav" aria-label="グローバルナビゲーション">
+        <ul class="navList">
+          <li><a class="navLink" href="index.html">HOME</a></li>
+          <li><a class="navLink" href="about_anscape.html">Anscapeについて</a></li>
+          <li><a class="navLink is-current" href="function_anscape.html" aria-current="page">Anscapeの仕組み</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="navBackdrop" class="navBackdrop" hidden></div>
+
+  <main id="main" class="main" role="main">
+    <div class="container">
+      <header class="pageHeader" id="function_anscape">
+        <!-- TODO: PASTE HERE（H1） -->
+        <h1 class="h1">アプリの仕組みについて</h1>
+      </header>
+
+      <nav class="toc" aria-label="このページの目次">
+        <ul class="tocList">
+          <li><a class="tocLink" href="#func_overview">概要</a></li>
+          <li><a class="tocLink" href="#func_services">使用サービス概要図</a></li>
+          <li><a class="tocLink" href="#func_data">使用データ</a></li>
+          <li><a class="tocLink" href="#func_features">各機能</a></li>
+          <li><a class="tocLink" href="#func_notsupported">非対応データ</a></li>
+          <li><a class="tocLink" href="#func_languages">使用言語</a></li>
+        </ul>
+      </nav>
+
+      <section class="section" id="func_overview">
+        <h2 class="h2">概要</h2>
+        <!-- TODO: PASTE HERE（概要テキスト） -->
+        <div class="prose">
+          <p>
+            Anscapeでは、日々変化する鉄道の運行状況や周辺環境の情報をリアルタイムに整理し、「いま立ち止まっている状態」から「次に取れる行動」へと利用者を導くための処理を行っています。
+          </p>
+          <p>
+            この仕組みの中核となっているのが、公共交通オープンデータセンターや各事業者が提供する運行情報、GTFS-RTによる列車位置・遅延データ、シェアサイクルのGBFSデータなど、複数の動的データの統合処理です。Anscapeのサーバー側では、これらを単に表示用に中継するのではなく、時刻・場所・路線・代替手段といった観点で正規化し、利用者の現在地や選択中の路線に即した「判断に使える情報」へと変換しています。
+          </p>
+          <p>
+            さらにAnscapeの特徴は、鉄道情報にとどまらず、移動の代替手段まで含めて行動選択を支援している点にあります。シェアサイクルのポート情報や空き状況、周辺の立ち寄り先候補といった情報も扱うことで、「待つ」「乗り換える」「別ルートで向かう」「一度外に出る」といった複数の選択肢を、同じ画面上で比較できるようにしています。
+          </p>
+          <p>
+            このようにAnscapeのバックエンドは、バラバラに存在する交通・移動・周辺環境のデータを一つの文脈にまとめ、利用者が“迷う時間”を減らし、“動き出すための材料”を提供するための意思決定アプリとして機能しています。詳細な技術的な仕組みやデータ処理の流れについては、以下をご覧ください。
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="func_services">
+        <h2 class="h2">使用したサービスの概要図</h2>
+
+        <!-- TODO: PASTE HERE（サービス概要図 16:9） -->
+        <figure class="mediaFrame mediaFrame--widescreen" data-aspect="16x9">
+          <a class="mediaLink" href="assets/img/anscape_overview.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+            <img class="media" src="assets/img/anscape_overview.png" alt="使用サービス概要図（差し替え可）"
+              loading="lazy" decoding="async" data-media="img" data-fallback="widescreen" />
+          </a>
+          <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+        </figure>
+      </section>
+
+      <section class="section" id="func_data">
+        <h2 class="h2">使用データ</h2>
+
+        <h3 class="h3">データの種類</h3>
+        <!-- TODO: PASTE HERE（表データは後で差し替え/追記） -->
+        <div class="tableWrap" role="region" aria-label="データ種類の表（横スクロール）" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">種類</th>
+                <th scope="col">目的</th>
+                <th scope="col">リソース元</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>鉄道関連データ(JSON, GTFS, GTFS-RT)</td>
+                <td>現在地付近の駅、路線、列車情報を取得</td>
+                <td>公共交通オープンデータセンター</td>
+              </tr>
+              <tr>
+                <td>シェアサイクル関連データ(GBFS)</td>
+                <td>現在地付近のポートの利用状況を取得</td>
+                <td>公共交通オープンデータセンター</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="h3">事業者一覧</h3>
+        <!-- TODO: PASTE HERE（表データは後で差し替え/追記） -->
+        <div class="tableWrap" role="region" aria-label="事業者一覧の表（横スクロール）" tabindex="0">
+          <table class="table table--dense">
+            <thead>
+              <tr>
+                <th scope="col">事業者名</th>
+                <th scope="col">駅情報（Station）</th>
+                <th scope="col">運行情報(TrainInformation)</th>
+                <th scope="col">GTFS</th>
+                <th scope="col">鉄道関連リアルタイム情報(VehiclePosition,TripUpdate)</th>
+                <th scope="col">備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>JR東日本</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td></td></tr>
+              <tr><td>相模鉄道</td><td>⚪︎</td><td></td><td>⚪︎</td><td></td><td></td></tr>
+              <tr><td>東武鉄道</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td></td></tr>
+              <tr><td>京急電鉄</td><td>⚪︎</td><td>⚪︎*</td><td></td><td></td><td>事業者(Operator)情報</td></tr>
+              <tr><td>東急電鉄</td><td>⚪︎</td><td>⚪︎</td><td></td><td></td><td></td></tr>
+              <tr><td>西武鉄道</td><td>⚪︎</td><td>⚪︎*</td><td></td><td></td><td>事業者(Operator)情報</td></tr>
+              <tr><td>小田急電鉄</td><td>⚪︎</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>横浜市営地下鉄</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td></td></tr>
+              <tr><td>東京メトロ</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td></td><td></td></tr>
+              <tr><td>東京臨海高速鉄道</td><td>⚪︎</td><td>⚪︎*</td><td>⚪︎</td><td></td><td>事業者(Operator)情報</td></tr>
+              <tr><td>東京都交通局</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td>⚪︎</td><td></td></tr>
+              <tr><td>ゆりかもめ</td><td>⚪︎</td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>首都圏新都市鉄道</td><td>⚪︎</td><td>⚪︎*</td><td>⚪︎</td><td></td><td>事業者(Operator)情報</td></tr>
+              <tr><td>多摩都市モノレール</td><td>⚪︎</td><td>⚪︎*</td><td>⚪︎</td><td></td><td>事業者(Operator)情報</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice" role="note">
+          <!-- TODO: PASTE HERE（補足） -->
+          <p class="subtle">※表が横に長い場合でも読みやすいよう、横スクロールに対応しています。</p>
+        </div>
+      </section>
+
+      <section class="section" id="func_features">
+        <h2 class="h2">各機能の仕組み</h2>
+
+        <article class="feature" id="func_feature_traininfo">
+          <header class="featureHeader">
+            <h3 class="h3">1. 現在地近辺の駅の運行情報を収集する機能</h3>
+            <p class="subtle"><!-- TODO: PASTE HERE（概要テキスト枠） --></p>
+          </header>
+
+          <!-- TODO: PASTE HERE（仕組み概要図 16:9） -->
+          <figure class="mediaFrame mediaFrame--widescreen" data-aspect="16x9">
+            <a class="mediaLink" href="assets/img/anscape_func_traininfo.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+              <img class="media" src="assets/img/anscape_func_traininfo.png" alt="機能1 仕組み図（差し替え可）"
+                loading="lazy" decoding="async" data-media="img" data-fallback="widescreen" />
+            </a>
+            <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+          </figure>
+
+          <!-- TODO: PASTE HERE（手順：箇条書き枠） -->
+          <ol class="flow">
+            <li>iOSアプリで「HOME」画面を押すと、現在地の情報をiPhoneから取得</li>
+            <li>現在地から半径2km 圏内で駅情報API(Station)にリクエスト（チャレンジ用/公開用の両方）</li>
+            <li>
+              返り値から、駅名・位置情報（経度緯度）・路線名を抽出。半径1km以内の同名駅はグループ化（Haversine公式を利用）
+              <!-- 外部リンクはプレースホルダ（後で差し替え） -->
+              <a class="link link--placeholder" href="https://rosettacode.org/wiki/Haversine_formula" aria-label="Haversine 参照リンク（後で差し替え）">（参照リンク）</a>
+              し、駅ごとに路線IDをまとめてキャッシュデータを作成。
+            </li>
+            <li>キャッシュデータを元に運行情報APIにリクエスト</li>
+            <li>運行情報API(TrainInformation)から駅ごとの各路線の運行情報を取得し、必要に応じて結合</li>
+            <li>取得データをFirestoreに格納</li>
+            <li>FirestoreのデータをiOSに返して表示</li>
+          </ol>
+        </article>
+
+        <article class="feature" id="func_feature_closetrain">
+          <header class="featureHeader">
+            <h3 class="h3">2. 各路線の接近列車の状況取得機能</h3>
+            <p class="subtle"><!-- TODO: PASTE HERE（概要テキスト枠） --></p>
+          </header>
+
+          <figure class="mediaFrame mediaFrame--widescreen" data-aspect="16x9">
+            <a class="mediaLink" href="assets/img/anscape_func_closetraininfo.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+              <img class="media" src="assets/img/anscape_func_closetraininfo.png" alt="機能2 仕組み図（差し替え可）"
+                loading="lazy" decoding="async" data-media="img" data-fallback="widescreen" />
+            </a>
+            <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+          </figure>
+
+          <div class="splitNote">
+            <div class="card card--flat">
+              <h4 class="h4">事前準備</h4>
+              <!-- TODO: PASTE HERE（手順：箇条書き枠） -->
+              <ul class="bullets">
+                <li>GTFSデータを取得（JR東日本、東武鉄道、横浜市営地下鉄、東京都交通局）</li>
+                <li>事業者ごとに整理し、路線IDごとに必要データを辞書化してGCSへ保存</li>
+              </ul>
+            </div>
+
+            <div class="card card--flat">
+              <h4 class="h4">本処理</h4>
+              <!-- TODO: PASTE HERE（手順：箇条書き枠） -->
+              <ol class="flow flow--compact">
+                <li>路線カードをタップすると処理開始</li>
+                <li>GTFS辞書データをGCSから取得</li>
+                <li>選択路線の情報を抽出</li>
+                <li>事業者のリアルタイム情報API(VehiclePosition, TripUpdate)へアクセスしprotobufを変換</li>
+                <li>接近列車（上り最大3本/下り最大3本）を抽出</li>
+                <li>Firestoreに保存</li>
+                <li>iOSへ返して表示</li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature" id="func_feature_cyclemap">
+          <header class="featureHeader">
+            <h3 class="h3">3. 現在地周辺のシェアサイクルポート状況マップ表示機能</h3>
+            <p class="subtle"><!-- TODO: PASTE HERE（概要テキスト枠） --></p>
+          </header>
+
+          <figure class="mediaFrame mediaFrame--widescreen" data-aspect="16x9">
+            <a class="mediaLink" href="assets/img/anscape_func_cyclemapinfo.png" data-lightbox="true" data-caption="TODO: PASTE HERE（キャプション）">
+              <img class="media" src="assets/img/anscape_func_cyclemapinfo.png" alt="機能3 仕組み図（差し替え可）"
+                loading="lazy" decoding="async" data-media="img" data-fallback="widescreen" />
+            </a>
+            <figcaption class="figcaption"><!-- TODO: PASTE HERE（キャプション） --></figcaption>
+          </figure>
+
+          <ol class="flow">
+            <li>「シェアサイクルマップを開く」ボタンで処理開始</li>
+            <li>現在地を取得し、GBFS関連API（station_status / station_information）へサービスごとにリクエスト</li>
+            <li>station_idをキーに、ポート情報・URL・利用可能台数を結合</li>
+            <li>
+              Haversine公式で距離を計算し、750m以内に絞り込み・近い順に並べる
+              <a class="link link--placeholder" href="https://rosettacode.org/wiki/Haversine_formula" aria-label="Haversine 参照リンク（後で差し替え）">（参照リンク）</a>
+            </li>
+            <li>結果をiOSへ返し、MapKitで表示</li>
+          </ol>
+        </article>
+      </section>
+
+      <section class="section" id="func_notsupported">
+        <h2 class="h2">非対応のデータについて</h2>
+        <!-- TODO: PASTE HERE（本文） -->
+        <div class="prose">
+          <p>
+            実質全ての機能を使用可能なのは、JR東日本／東武鉄道／横浜市営地下鉄／東京都交通局の４事業者のみ。処理も４事業者のみに対応した構成となっている。
+            今後利用可能な事業者が増えた場合の処理の対応が必要。
+          </p>
+          <p>またバス事業者はじめ他の公共交通データは未使用。</p>
+        </div>
+      </section>
+
+      <section class="section" id="func_languages">
+        <h2 class="h2">使用言語について</h2>
+        <!-- TODO: PASTE HERE（本文） -->
+        <div class="prose">
+          <p>バックエンド処理にはPython、アプリの表示にはSwiftを採用しています。</p>
+          <ul class="bullets">
+            <li>Python：math（Haversine計算）、gzip/pickle（GCSのGTFS辞書データ読込）</li>
+            <li>Swift：MapKit（シェアサイクルマップ表示）</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer class="siteFooter" role="contentinfo">
+      <div class="container footerInner">
+        <p class="footerText">© Anscape</p>
+        <p class="footerText">
+          <a class="link" href="https://apps.apple.com/jp/app/anscape/id6756722587" target="_blank" rel="noopener">App Store</a>
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox (共通) -->
+  <div id="lightbox" class="lightbox" hidden>
+    <div class="lightboxBackdrop" data-lightbox-close></div>
+    <div class="lightboxDialog" role="dialog" aria-modal="true" aria-label="画像拡大表示">
+      <button class="lightboxClose" type="button" data-lightbox-close aria-label="閉じる">×</button>
+      <figure class="lightboxFigure">
+        <img id="lightboxImg" class="lightboxImg" alt="" />
+        <figcaption id="lightboxCaption" class="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
